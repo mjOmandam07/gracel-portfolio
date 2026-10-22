@@ -56,7 +56,7 @@ export default function Hero() {
               href="#contact"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold text-[var(--text-color)] hover:text-[#8B1FA0] bg-white/5 dark:bg-white/[0.04] hover:bg-white/10 border border-[var(--border-color)] hover:border-[#8B1FA0]/40 rounded-xl transition-all"
             >
-              <span>Book Automation Audit</span>
+              <span>Book Now</span>
             </a>
           </div>
 
