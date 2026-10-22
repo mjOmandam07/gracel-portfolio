@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { personalInfo } from '../data/portfolioData';
-import { Mail, Send, CheckCircle2, Clock, Globe } from 'lucide-react';
+import React, { useState } from "react";
+import { personalInfo } from "../data/portfolioData";
+import { Mail, Send, CheckCircle2, Clock, Globe } from "lucide-react";
 
 export default function Contact() {
   const [formState, setFormState] = useState({
-    name: '',
-    email: '',
-    company: '',
-    service: 'AI Agents & RAG',
-    budget: '$5k - $15k',
-    message: '',
+    name: "",
+    email: "",
+    company: "",
+    service: "Workflow Orchestration (n8n/Make/Zapier)",
+    budget: "$5k - $15k",
+    message: "",
   });
 
   const [submitting, setSubmitting] = useState(false);
@@ -25,22 +25,22 @@ export default function Contact() {
   };
 
   const servicesList = [
-    'AI Agents & RAG',
-    'Workflow Orchestration (n8n/Make)',
-    'Custom API & Microservices',
-    'Automated Reporting & Alerts',
-    'Operational Audit',
+    "Workflow Orchestration (n8n/Make/Zapier)",
+    "Automated Reporting & Alerts",
   ];
 
   const budgetList = [
-    '< $5,000',
-    '$5,000 - $15,000',
-    '$15,000 - $30,000',
-    '$30,000+',
+    "< $5,000",
+    "$5,000 - $15,000",
+    "$15,000 - $30,000",
+    "$30,000+",
   ];
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden bg-cyber-grid">
+    <section
+      id="contact"
+      className="py-24 relative overflow-hidden bg-cyber-grid"
+    >
       {/* Ambient orbs */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-[#8B1FA0]/10 dark:bg-[#8B1FA0]/15 rounded-full blur-[140px] pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#EE34A4]/8 dark:bg-[#DA79E9]/8 rounded-full blur-[110px] pointer-events-none"></div>
@@ -61,7 +61,9 @@ export default function Contact() {
                   Let's Build Your Autonomous Stack
                 </h2>
                 <p className="text-[var(--muted-color)] text-sm sm:text-base leading-relaxed mb-8">
-                  Whether you have an urgent manual bottleneck to eliminate or want to deploy autonomous AI agents across your organization, I'm ready to architect your solution.
+                  Whether you have an urgent manual bottleneck to eliminate or
+                  want to deploy autonomous AI agents across your organization,
+                  I'm ready to architect your solution.
                 </p>
 
                 {/* Direct info items */}
@@ -71,8 +73,13 @@ export default function Contact() {
                       <Mail className="w-5 h-5" />
                     </div>
                     <div>
-                      <div className="text-xs text-[var(--subtle-color)]">Direct Email</div>
-                      <a href={`mailto:${personalInfo.email}`} className="text-sm font-mono font-medium text-[var(--text-color)] hover:text-[#8B1FA0] transition-colors">
+                      <div className="text-xs text-[var(--subtle-color)]">
+                        Direct Email
+                      </div>
+                      <a
+                        href={`mailto:${personalInfo.email}`}
+                        className="text-sm font-mono font-medium text-[var(--text-color)] hover:text-[#8B1FA0] transition-colors"
+                      >
                         {personalInfo.email}
                       </a>
                     </div>
@@ -83,7 +90,9 @@ export default function Contact() {
                       <Clock className="w-5 h-5" />
                     </div>
                     <div>
-                      <div className="text-xs text-[var(--subtle-color)]">SLA Response Guarantee</div>
+                      <div className="text-xs text-[var(--subtle-color)]">
+                        SLA Response Guarantee
+                      </div>
                       <div className="text-sm font-semibold text-[#8B1FA0] font-mono">
                         Within 24 business hours
                       </div>
@@ -95,7 +104,9 @@ export default function Contact() {
                       <Globe className="w-5 h-5" />
                     </div>
                     <div>
-                      <div className="text-xs text-[var(--subtle-color)]">Work Mode</div>
+                      <div className="text-xs text-[var(--subtle-color)]">
+                        Work Mode
+                      </div>
                       <div className="text-sm font-semibold text-[var(--text-color)]">
                         {personalInfo.location} · Async & Real-time
                       </div>
@@ -124,18 +135,23 @@ export default function Contact() {
                     Inquiry Received!
                   </h3>
                   <p className="text-[var(--muted-color)] text-sm max-w-md mb-6 leading-relaxed">
-                    Thank you, <span className="text-[var(--text-color)] font-semibold">{formState.name}</span>. Gracel has received your project briefing and will review your requirements within 24 hours.
+                    Thank you,{" "}
+                    <span className="text-[var(--text-color)] font-semibold">
+                      {formState.name}
+                    </span>
+                    . Gracel has received your project briefing and will review
+                    your requirements within 24 hours.
                   </p>
                   <button
                     onClick={() => {
                       setSubmitted(false);
                       setFormState({
-                        name: '',
-                        email: '',
-                        company: '',
-                        service: 'AI Agents & RAG',
-                        budget: '$5,000 - $15,000',
-                        message: '',
+                        name: "",
+                        email: "",
+                        company: "",
+                        service: "AI Agents & RAG",
+                        budget: "$5,000 - $15,000",
+                        message: "",
                       });
                     }}
                     className="text-xs font-mono text-[#8B1FA0] hover:underline font-semibold"
@@ -154,7 +170,9 @@ export default function Contact() {
                         type="text"
                         required
                         value={formState.name}
-                        onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                        onChange={(e) =>
+                          setFormState({ ...formState, name: e.target.value })
+                        }
                         placeholder="Sarah Connor"
                         className="w-full px-4 py-2.5 rounded-xl bg-black/[0.03] dark:bg-white/[0.04] border border-[var(--border-color)] text-[var(--text-color)] text-sm focus:border-[#8B1FA0] focus:outline-none focus:ring-1 focus:ring-[#8B1FA0] transition-all placeholder:text-[var(--subtle-color)]"
                       />
@@ -167,7 +185,9 @@ export default function Contact() {
                         type="email"
                         required
                         value={formState.email}
-                        onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                        onChange={(e) =>
+                          setFormState({ ...formState, email: e.target.value })
+                        }
                         placeholder="sarah@company.com"
                         className="w-full px-4 py-2.5 rounded-xl bg-black/[0.03] dark:bg-white/[0.04] border border-[var(--border-color)] text-[var(--text-color)] text-sm focus:border-[#8B1FA0] focus:outline-none focus:ring-1 focus:ring-[#8B1FA0] transition-all placeholder:text-[var(--subtle-color)]"
                       />
@@ -181,7 +201,9 @@ export default function Contact() {
                     <input
                       type="text"
                       value={formState.company}
-                      onChange={(e) => setFormState({ ...formState, company: e.target.value })}
+                      onChange={(e) =>
+                        setFormState({ ...formState, company: e.target.value })
+                      }
                       placeholder="Acme Autonomous Inc"
                       className="w-full px-4 py-2.5 rounded-xl bg-black/[0.03] dark:bg-white/[0.04] border border-[var(--border-color)] text-[var(--text-color)] text-sm focus:border-[#8B1FA0] focus:outline-none focus:ring-1 focus:ring-[#8B1FA0] transition-all placeholder:text-[var(--subtle-color)]"
                     />
@@ -197,11 +219,13 @@ export default function Contact() {
                         <button
                           type="button"
                           key={srv}
-                          onClick={() => setFormState({ ...formState, service: srv })}
+                          onClick={() =>
+                            setFormState({ ...formState, service: srv })
+                          }
                           className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-all ${
                             formState.service === srv
-                              ? 'bg-[#8B1FA0] text-white font-semibold shadow-md shadow-[#8B1FA0]/25'
-                              : 'bg-black/[0.03] dark:bg-white/5 text-[var(--muted-color)] hover:text-[var(--text-color)] border border-[var(--border-color)]'
+                              ? "bg-[#8B1FA0] text-white font-semibold shadow-md shadow-[#8B1FA0]/25"
+                              : "bg-black/[0.03] dark:bg-white/5 text-[var(--muted-color)] hover:text-[var(--text-color)] border border-[var(--border-color)]"
                           }`}
                         >
                           {srv}
@@ -220,11 +244,13 @@ export default function Contact() {
                         <button
                           type="button"
                           key={b}
-                          onClick={() => setFormState({ ...formState, budget: b })}
+                          onClick={() =>
+                            setFormState({ ...formState, budget: b })
+                          }
                           className={`px-3 py-1.5 rounded-xl text-xs font-mono transition-all ${
                             formState.budget === b
-                              ? 'bg-[#8B1FA0] text-white font-semibold shadow-md shadow-[#8B1FA0]/25'
-                              : 'bg-black/[0.03] dark:bg-white/5 text-[var(--muted-color)] hover:text-[var(--text-color)] border border-[var(--border-color)]'
+                              ? "bg-[#8B1FA0] text-white font-semibold shadow-md shadow-[#8B1FA0]/25"
+                              : "bg-black/[0.03] dark:bg-white/5 text-[var(--muted-color)] hover:text-[var(--text-color)] border border-[var(--border-color)]"
                           }`}
                         >
                           {b}
@@ -241,7 +267,9 @@ export default function Contact() {
                       required
                       rows={4}
                       value={formState.message}
-                      onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                      onChange={(e) =>
+                        setFormState({ ...formState, message: e.target.value })
+                      }
                       placeholder="Describe your current bottlenecks, current tools (e.g. HubSpot, Slack, Airtable), and what you want to automate..."
                       className="w-full px-4 py-2.5 rounded-xl bg-black/[0.03] dark:bg-white/[0.04] border border-[var(--border-color)] text-[var(--text-color)] text-sm focus:border-[#8B1FA0] focus:outline-none focus:ring-1 focus:ring-[#8B1FA0] transition-all placeholder:text-[var(--subtle-color)]"
                     ></textarea>

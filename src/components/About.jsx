@@ -18,7 +18,7 @@ export default function About() {
           <div className="relative flex justify-center lg:justify-start">
             {/* Floating card — top left */}
             <div className="absolute -top-4 -left-4 z-10 glass-panel px-5 py-3 rounded-2xl shadow-lg">
-              <p className="text-2xl font-extrabold text-[#8B1FA0]">12</p>
+              <p className="text-2xl font-extrabold text-[#8B1FA0]">9</p>
               <p className="text-xs text-[var(--muted-color)] font-medium mt-0.5">Projects</p>
             </div>
 
