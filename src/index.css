@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #8B1FA0;
+  --color-primary-hover: #6E0880;
+  --color-secondary: #DA79E9;
+  --color-accent: #EE34A4;
+
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+:root,
+html[data-theme='dark'],
+.dark {
+  --bg-color: #060008;
+  --surface-color: rgba(15, 3, 20, 0.92);
+  --surface-hover: rgba(22, 5, 30, 0.98);
+  --surface-solid: #0A0010;
+  --card-color: rgba(12, 2, 18, 0.85);
+  --card-border: rgba(218, 121, 233, 0.18);
+  --card-border-hover: rgba(218, 121, 233, 0.45);
+  --border-color: rgba(218, 121, 233, 0.15);
+  --text-color: #F6E8FF;
+  --muted-color: #C8A8D8;
+  --subtle-color: #7A5888;
+  --primary-color: #DA79E9;
+  --primary-glow: rgba(218, 121, 233, 0.35);
+  --secondary-color: #A61989;
+  --accent-color: #EE34A4;
+  --panel-bg: rgba(10, 0, 16, 0.82);
+  --grid-line: rgba(218, 121, 233, 0.05);
+}
+
+html[data-theme='light'],
+.light {
+  --bg-color: #FEF4F3;
+  --surface-color: rgba(255, 248, 255, 0.92);
+  --surface-hover: #FFFFFF;
+  --surface-solid: #FFFFFF;
+  --card-color: #FFFFFF;
+  --card-border: rgba(104, 10, 123, 0.12);
+  --card-border-hover: rgba(104, 10, 123, 0.35);
+  --border-color: rgba(104, 10, 123, 0.1);
+  --text-color: #1C0A2C;
+  --muted-color: #5C3A6A;
+  --subtle-color: #8A6898;
+  --primary-color: #680A7B;
+  --primary-glow: rgba(104, 10, 123, 0.2);
+  --secondary-color: #F263D1;
+  --accent-color: #CB1080;
+  --panel-bg: rgba(255, 248, 255, 0.85);
+  --grid-line: rgba(104, 10, 123, 0.04);
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg-color);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+  }
+}
+
+/* Cyber Grid with Palette-Driven Lines */
+.bg-cyber-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+}
+
+.bg-cyber-dots {
+  background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Glass Panels with Theme Variables */
+.glass-panel {
+  background: var(--panel-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--card-border);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel-hover:hover {
+  border-color: var(--card-border-hover);
+  box-shadow: 0 10px 30px -10px var(--primary-glow);
+  transform: translateY(-2px);
+}
+
+/* Glow Effects */
+.primary-glow,
+.emerald-glow {
+  box-shadow: 0 0 25px -5px var(--primary-glow);
+}
+
+.primary-glow-sm,
+.emerald-glow-sm {
+  box-shadow: 0 0 15px -3px var(--primary-glow);
+}
+
+/* Text Gradients — Purple/Pink Palette */
+.text-gradient-primary,
+.text-gradient-emerald {
+  background: linear-gradient(135deg, #680A7B 0%, #DA79E9 50%, #EE34A4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--text-color) 20%, var(--secondary-color) 65%, var(--primary-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+/* Marquee / Infinite scroll */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}

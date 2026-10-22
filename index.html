@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gracel Urquia | AI Automation Specialist</title>
+    <meta
+      name="description"
+      content="Gracel Urquia - AI Automation Specialist designing autonomous multi-agent systems, intelligent workflow pipelines (n8n, Make, Zapier), and scalable business automations."
+    />
+    <script>
+      (function() {
+        const saved = localStorage.getItem('theme');
+        const isLight = saved === 'light' || (!saved && window.matchMedia('(prefers-color-scheme: light)').matches);
+        if (isLight) {
+          document.documentElement.classList.add('light');
+          document.documentElement.setAttribute('data-theme', 'light');
+        } else {
+          document.documentElement.classList.add('dark');
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="antialiased transition-colors duration-300 selection:bg-[#E8311B]/20 selection:text-[#E8311B]">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

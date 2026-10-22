@@ -1,0 +1,951 @@
+{
+  "projects": [
+    {
+      "id": "zapier-automated-video-to-social-content-repurposing-pipeline",
+      "title": "Automated Video-to-Social Content Repurposing Pipeline",
+      "category": "Zapier",
+      "short_description": "Turns a single uploaded video into blog posts and platform-ready LinkedIn and Facebook content, without any ongoing hands-on effort.",
+      "images": ["/images/projects/zapier/content repurposing.png"],
+      "description": "A workflow developed in Zapier that turns one uploaded video into ready-to-post content. It triggers on new Google Drive uploads, transcribes the video with Gemini, generates two blog posts, then drafts and publishes platform-specific posts to LinkedIn and Facebook, fully unattended.",
+      "subworkflows": [],
+      "client_context": "A content-driven business producing regular video content (webinars, tutorials, talking-head clips) but struggling to convert that single asset into the multi-platform written content their marketing strategy demanded.",
+      "problem": {
+        "summary": "Every video the business produced represented hours of hands-on downstream work. After recording, someone had to watch the footage, transcribe it, extract key ideas, write blog posts, then rewrite that content into platform-specific social posts for LinkedIn and Facebook, each with its own tone and format.",
+        "issues": [
+          {
+            "name": "Bottleneck",
+            "description": "Content sat unpublished for days waiting for a human to handle it, killing the timeliness of the message."
+          },
+          {
+            "name": "Inconsistency",
+            "description": "Output quality and posting cadence varied depending on who did the work and how busy they were."
+          },
+          {
+            "name": "Wasted asset value",
+            "description": "Most videos were published once and never repurposed, leaving the majority of their potential reach untapped."
+          }
+        ]
+      },
+      "objectives": [
+        "Eliminate hands-on transcription and content drafting from the automation.",
+        "without hands-on intervention transform one uploaded video into multiple written assets (blog posts plus social posts).",
+        "Tailor output to each platform's format rather than cross-posting identical text.",
+        "Trigger the entire pipeline starting with one action, uploading a video, with zero further human input required."
+      ],
+      "approach": {
+        "summary": "I designed and developed an complete automation in Zapier that watches a Google Drive folder and runs the full repurposing sequence autonomously.",
+        "steps": [
+          {
+            "step": 1,
+            "name": "Wait for a new video",
+            "description": "the automation without hands-on intervention detects when a new video is uploaded."
+          },
+          {
+            "step": 2,
+            "name": "Understand the video and generate blog posts",
+            "description": "AI converts the video to text and analyzes the video, and produces blog posts from its content."
+          },
+          {
+            "step": 3,
+            "name": "Post to different social media platforms",
+            "description": "The content is drafted and published to multiple platforms, each tailored to its format."
+          }
+        ]
+      },
+      "key_design_decisions": [
+        {
+          "name": "Filtering early",
+          "description": "maintains AI/API costs down by discarding non-video uploads before any expensive processing runs."
+        },
+        {
+          "name": "Separate AI drafting per platform",
+          "description": "Rather than one generic post fanned out, respects that LinkedIn and Facebook audiences respond to different framing."
+        },
+        {
+          "name": "Looping over line items",
+          "description": "Makes the pipeline scalable: adding a third platform (e.g., X or a blog CMS) is a matter of adding a path, not rebuilding the flow."
+        },
+        {
+          "name": "Decoupled stages",
+          "description": "Transcribe, generate, draft, publish. Any single step can be swapped or upgraded without breaking the rest."
+        }
+      ],
+      "outcome": [
+        {
+          "name": "From hours to minutes of human time",
+          "description": "A handle that previously required hands-on watching, writing, and posting now runs unattended starting with one upload."
+        },
+        {
+          "name": "One video into four+ assets",
+          "description": "Each video now yields two blog posts plus tailored LinkedIn and Facebook posts, multiplying the reach of every recording."
+        },
+        {
+          "name": "reliable cadence",
+          "description": "Content publishes reliably within the trigger cycle rather than whenever a team member had bandwidth."
+        },
+        {
+          "name": "Platform-fit content",
+          "description": "Posts read as native to each channel, improving engagement over generic cross-posting."
+        }
+      ],
+      "tools_and_stack": [
+        "Zapier (orchestration, filtering, looping, paths, AI drafting)",
+        "Google Drive (asset source & trigger)",
+        "Google AI Studio / Gemini (video understanding & transcription)",
+        "LinkedIn integration (publishing)",
+        "Facebook Pages integration (publishing)"
+      ],
+      "business_value": "This automation turns a content library into a self-repurposing engine. the business captures the full downstream value of every video they produce, without increasing staffing, and does which helps ensure with a system that's modular enough to extend to new platforms as their strategy grows."
+    },
+    {
+      "id": "zapier-asana-driven-client-lifecycle-automation",
+      "title": "Asana-Driven Client Lifecycle Automation",
+      "category": "Zapier",
+      "short_description": "Drives every deal from first contact to paid-and-closed without hands-on intervention, firing the appropriate email, follow-up message, and onboarding at each stage.",
+      "images": ["/images/projects/zapier/asana lead.png"],
+      "description": "A workflow developed in Zapier that manages a customer from first contact to paid-and-closed. It starts each time an Asana task is updated, reads the deal stage, and runs the appropriate action for that stage, drafting and delivering stage-specific emails, setting up folders and subtasks, handling follow-up message messages, and tailoring messaging by service tier, without requiring routine hands-on intervention.",
+      "subworkflows": [
+        {
+          "name": "Analyze Email Response",
+          "images": ["/images/projects/zapier/asana lead subzap.png"],
+          "description": "A sub-workflow that reviews a lead's email reply and determines whether a follow-up message is still needed, which helps ensure the main workflow only chases prospects who haven't genuinely responded."
+        }
+      ],
+      "client_context": "A service business managing customer opportunities through Asana but relying on staff to manually move each deal forward, delivering follow-up message messages, quotes, approval emails, and onboarding messages manually at every stage.",
+      "problem": {
+        "summary": "Moving a customer through the pipeline meant a person had to notice each status change in Asana and manually perform the appropriate next action, whether that was setting up a project folder, chasing a quiet lead, delivering a quote, or onboarding a paid customer.",
+        "issues": [
+          {
+            "name": "hands-on stage handling",
+            "description": "Every change in a deal's status required someone to remember and execute the correct follow-up message, leaving room for missed or delayed actions."
+          },
+          {
+            "name": "Dropped follow-up message messages",
+            "description": "prospects that went quiet slipped through the cracks because follow-up message depended on a person tracking them."
+          },
+          {
+            "name": "Inconsistent onboarding",
+            "description": "Approved and paying clients received different messaging and setup depending on who handled them and how busy they were."
+          }
+        ]
+      },
+      "objectives": [
+        "Trigger the appropriate action without hands-on intervention the moment a deal's status changes in Asana.",
+        "Handle every pipeline stage, from new lead to paid and closed, without hands-on intervention.",
+        "systematize stage-specific emails, follow-up message messages, and project setup.",
+        "Tailor onboarding messaging to each customer's service tier."
+      ],
+      "approach": {
+        "summary": "I designed and developed an complete automation in Zapier that watches Asana for task updates and routes each deal down the correct branch based on its current stage.",
+        "steps": [
+          {
+            "step": 1,
+            "name": "Watch for a deal status change",
+            "description": "the automation starts each time a task is updated in Asana and reads its current stage."
+          },
+          {
+            "step": 2,
+            "name": "Route to the appropriate stage",
+            "description": "Based on the deal's status, the automation branches into the correct path for that stage of the business lifecycle."
+          },
+          {
+            "step": 3,
+            "name": "Run the stage-specific action",
+            "description": "Each path performs the appropriate action, setting up project folders and subtasks, drafting and delivering stage-appropriate emails, chasing quiet prospects, or onboarding paid clients with tier-specific messaging."
+          }
+        ]
+      },
+      "key_design_decisions": [
+        {
+          "name": "Status-driven routing",
+          "description": "by using the deal's stage to drive the branches means one workflow covers the entire lifecycle instead of many disconnected automations."
+        },
+        {
+          "name": "system-driven follow-up message with delays",
+          "description": "Quiet prospects and quotes are followed up on without hands-on intervention after a set delay, which helps ensure no opportunity goes cold."
+        },
+        {
+          "name": "Response analysis before action",
+          "description": "A sub-workflow analyzes email responses which helps ensure follow-up message messages only fire when they should, avoiding messaging prospects who already replied."
+        },
+        {
+          "name": "Tier-based onboarding",
+          "description": "Paid clients are split into Basic, Pro, and Executive branches which helps ensure each receives onboarding suited to their service level."
+        }
+      ],
+      "outcome": [
+        {
+          "name": "Hands-off pipeline movement",
+          "description": "opportunities now advance without hands-on intervention the moment their status changes, without any staff action required at each stage."
+        },
+        {
+          "name": "No missed follow-up message messages",
+          "description": "Quiet prospects and pending quotes are chased without hands-on intervention, recovering opportunities that used to slip away."
+        },
+        {
+          "name": "reliable customer experience",
+          "description": "Every customer receives the same reliable, on-brand emails and onboarding regardless of who is handling the account."
+        },
+        {
+          "name": "Tailored onboarding at scale",
+          "description": "Basic, Pro, and Executive clients each receive messaging matched to their tier without any extra hands-on effort."
+        }
+      ],
+      "tools_and_stack": [
+        "Zapier (orchestration, paths, delays, filtering, AI drafting, sub-workflows)",
+        "Asana (deal tracking, trigger, project and subtask creation)",
+        "Google Drive (project folder and file setup)",
+        "AI by Zapier (drafting stage-specific and tier-specific emails)",
+        "Gmail (sending emails)"
+      ],
+      "business_value": "This automation turns Asana into a self-driving customer pipeline. Every deal moves through its full lifecycle, from lead to paid customer, with the appropriate emails, follow-up message messages, and onboarding firing without hands-on intervention, freeing the team from hands-on stage handling while ensuring no lead is ever dropped."
+    },
+    {
+      "id": "zapier-lead-intake-enrichment-and-priority-routing",
+      "title": "Lead Intake, Enrichment & Priority Routing",
+      "category": "Zapier",
+      "short_description": "Captures, enriches, and scores every inbound lead, then routes the hot ones straight to sales while nurturing the rest.",
+      "images": ["/images/projects/zapier/lead enrichment.png"],
+      "description": "A workflow developed in Zapier that captures new form prospects, enriches them with company data, scores their priority, and routes them accordingly. It catches a Tally 'Work with Us' submission (name, email, company, size, website, prior contact, and referral source), cleans the data, enriches the lead via Apollo, applies AI to score it high or low priority, then either alerts the sales team and saves it to a database or delivers an system-driven follow-up message, without requiring routine hands-on intervention.",
+      "subworkflows": [],
+      "client_context": "A business capturing inbound prospects through a Tally 'Work with Us' form, collecting contact details, company name and size, website, prior interaction, and referral source, but relying on staff to manually research each lead, judge its value, and decide how to follow up, without any reliable system for prioritizing or storing them.",
+      "problem": {
+        "summary": "Every form submission landed as a raw, bare-bones lead. Someone had to manually look up the company behind it, judge whether it was worth pursuing, alert the sales team on the good ones, and follow up on the rest, all manually and without any reliable record.",
+        "issues": [
+          {
+            "name": "hands-on lead research",
+            "description": "Staff had to research each lead's company details themselves before they could act, slowing down response time."
+          },
+          {
+            "name": "Inconsistent prioritization",
+            "description": "Whether a lead was treated as high or low value depended on individual judgment, which helps ensure good prospects were sometimes missed and time was wasted on poor ones."
+          },
+          {
+            "name": "Slow, uneven follow-up message",
+            "description": "High-value prospects did not always reach the sales team quickly, and lower-priority prospects often went without any follow-up message at all."
+          },
+          {
+            "name": "No central record",
+            "description": "prospects were not reliably stored anywhere, making it hard to track or revisit them later."
+          }
+        ]
+      },
+      "objectives": [
+        "Capture every Tally form submission without hands-on intervention the moment it comes in.",
+        "Enrich each lead with company details without hands-on research.",
+        "Score each lead's priority consistently and without hands-on intervention.",
+        "Route high-priority prospects to the sales team and store them, while following up on lower-priority ones."
+      ],
+      "approach": {
+        "summary": "I designed and developed an complete automation in Zapier that captures a form lead, enriches and scores it, then routes it down the appropriate branch based on its priority.",
+        "steps": [
+          {
+            "step": 1,
+            "name": "Capture and clean the lead",
+            "description": "A Tally 'Work with Us' submission is captured via webhook, collecting the lead's contact details, company name and size, website, prior interaction, and referral source, and the incoming data is cleaned into a reliable format."
+          },
+          {
+            "step": 2,
+            "name": "Enrich and score the lead",
+            "description": "The lead is enriched with company details from Apollo, then AI scores it as high or low priority."
+          },
+          {
+            "step": 3,
+            "name": "Route by priority",
+            "description": "High-priority prospects are stored to the database and pushed to the sales team via Slack and email, while low-priority prospects receive an system-driven follow-up message email."
+          }
+        ]
+      },
+      "key_design_decisions": [
+        {
+          "name": "Clean before enrich",
+          "description": "Standardizing the raw form data first ensures the enrichment and scoring steps work from reliable inputs."
+        },
+        {
+          "name": "system-driven enrichment via Apollo",
+          "description": "Pulling company details from Apollo's organization enrichment endpoint removes hands-on research and gives the AI richer context to score on."
+        },
+        {
+          "name": "AI-based priority scoring",
+          "description": "Scoring each lead high or low with AI, drawing on signals like company size, website, and prior contact, replaces inconsistent human judgment with a repeatable standard."
+        },
+        {
+          "name": "Priority-driven routing",
+          "description": "Splitting on priority lets high-value prospects trigger immediate sales alerts and storage, while lower-value prospects are nurtured without hands-on intervention instead of ignored."
+        },
+        {
+          "name": "Central database of record",
+          "description": "Saving qualified prospects to Supabase generates a reliable, queryable record of every lead worth pursuing."
+        }
+      ],
+      "outcome": [
+        {
+          "name": "Instant lead capture and enrichment",
+          "description": "Every form lead is captured and enriched with company data without hands-on intervention, without any hands-on research."
+        },
+        {
+          "name": "reliable prioritization",
+          "description": "prospects are scored high or low by the same standard every time, which helps ensure the best ones surface reliably."
+        },
+        {
+          "name": "Faster sales response",
+          "description": "High-priority prospects reach the sales team via Slack and email the moment they qualify."
+        },
+        {
+          "name": "No lead left behind",
+          "description": "Lower-priority prospects receive an system-driven follow-up message instead of being dropped, and every qualified lead is stored for future reference."
+        }
+      ],
+      "tools_and_stack": [
+        "Zapier (orchestration, webhooks, code, paths, AI scoring and drafting)",
+        "Tally ('Work with Us' lead capture form)",
+        "Apollo (company data enrichment via the organizations enrich API)",
+        "AI by Zapier (priority scoring and email/message drafting)",
+        "Supabase (lead database of record)",
+        "Slack (sales team alerts)",
+        "Gmail (sending emails)"
+      ],
+      "business_value": "This automation turns a simple contact form into a self-qualifying lead engine. Each submission is captured, enriched, scored, and routed independently, which helps ensure the sales team spends time only on the prospects that matter, no good lead slips away, and every qualified lead is recorded, without any hands-on research or triage."
+    },
+    {
+      "id": "make-xero-transaction-report-to-asana-attachment",
+      "title": "Automated Xero Transaction Report to Asana Attachment",
+      "category": "Make",
+      "short_description": "Auto-generates a Xero financial report as a CSV and attaches it to the appropriate Asana task the moment it's completed, no hands-on export needed.",
+      "images": ["/images/projects/make/asana xero.png"],
+      "description": "A Make workflow that generates a Xero financial report as a CSV and attaches it to a completed Asana task. When a task is marked complete in Asana, it pulls the full year of Xero account transactions, formats them into a CSV that mirrors the hands-on report download, and uploads that file back to the Asana task, without requiring routine hands-on intervention.",
+      "subworkflows": [],
+      "client_context": "A customer who wants a General Ledger Detail report from Xero without hands-on intervention stored against an Asana task whenever that task is marked complete. Because the Xero API does not support the General Ledger Detail report directly, the Account Transactions report is used as a close, reliably extractable substitute.",
+      "problem": {
+        "summary": "the business needed the equivalent of Xero's General Ledger Detail report stored to a completed Asana task, but the Xero API does not expose that report, and producing it manually meant logging into Xero, running the report, downloading the CSV, and attaching it manually every time.",
+        "issues": [
+          {
+            "name": "Unsupported report in the API",
+            "description": "The General Ledger Detail report the business wanted is not available through the Xero API, which helps ensure it could not be pulled directly."
+          },
+          {
+            "name": "hands-on report handling",
+            "description": "Getting the report onto a task required someone to run it in Xero, download it, and upload it to Asana manually."
+          },
+          {
+            "name": "Formatting mismatch",
+            "description": "Any system-driven output had to match what a user sees when downloading the report manually, not just raw API data."
+          }
+        ]
+      },
+      "objectives": [
+        "Trigger without hands-on intervention when a task is marked complete in Asana.",
+        "Retrieve the last calendar year of transaction data from Xero as a substitute for the unsupported report.",
+        "Format the data into a CSV that mirrors the manually downloaded report.",
+        "Attach the resulting CSV to the completed Asana task without any hands-on steps."
+      ],
+      "approach": {
+        "summary": "I designed and developed an complete automation in Make that watches Asana for completed tasks, pulls and formats the Xero transaction data, and attaches the finished CSV back to the task.",
+        "steps": [
+          {
+            "step": 1,
+            "name": "Detect a completed task",
+            "description": "the automation triggers when a task is marked complete in Asana."
+          },
+          {
+            "step": 2,
+            "name": "Pull and develop the report",
+            "description": "It retrieves the full year of account transactions from Xero and assembles them into a CSV that matches the hands-on report download."
+          },
+          {
+            "step": 3,
+            "name": "Attach the report to the task",
+            "description": "The finished CSV is uploaded as an attachment to the completed Asana task, and the working sheet is cleared for the next run."
+          }
+        ]
+      },
+      "key_design_decisions": [
+        {
+          "name": "Account Transactions as a substitute report",
+          "description": "Since the Xero API does not support the General Ledger Detail report, the Account Transactions report is used as a close, extractable equivalent that reproduces the same information."
+        },
+        {
+          "name": "Google Sheets as a staging area",
+          "description": "Transactions are written row by row into a sheet, then read back and aggregated, giving a reliable way to develop and format the CSV before attaching it."
+        },
+        {
+          "name": "Wait step for write completion",
+          "description": "A deliberate wait ensures all transaction rows finish writing to the sheet before they are read and aggregated, preventing incomplete exports."
+        },
+        {
+          "name": "CSV mirrors the hands-on download",
+          "description": "The output is formatted to match what a user receives when downloading the report manually, which helps ensure the attached file looks familiar and correct."
+        },
+        {
+          "name": "Clear the sheet for the next run",
+          "description": "The staging sheet is wiped at the end of each run which helps ensure the next report starts clean and never mixes data across runs."
+        }
+      ],
+      "outcome": [
+        {
+          "name": "Report generated without hands-on intervention",
+          "description": "Completing a task in Asana now produces the financial report independently, without any hands-on Xero export."
+        },
+        {
+          "name": "Workaround for an API limitation",
+          "description": "The unsupported General Ledger Detail report is effectively replicated by using the Account Transactions data, unblocking the business's requirement."
+        },
+        {
+          "name": "Familiar, correctly formatted output",
+          "description": "The attached CSV mirrors the hands-on download, which helps ensure it matches what the business expects to see."
+        },
+        {
+          "name": "Clean, repeatable runs",
+          "description": "Each run starts from a cleared sheet, which helps ensure reports stay accurate and never carry over data from a previous run."
+        }
+      ],
+      "tools_and_stack": [
+        "Make (orchestration, router, iterator, aggregator, wait/sleep tools)",
+        "Asana (trigger on completed task, CSV attachment upload)",
+        "Xero (account transactions data via API call)",
+        "Google Sheets (staging, aggregating, and clearing report rows)"
+      ],
+      "business_value": "This automation removes a tedious, error-prone hands-on task and works around a hard API limitation. The moment a task is completed in Asana, the business receives a correctly formatted financial report attached to it without hands-on intervention, replicating a report Xero's API cannot produce and eliminating the hands-on export-download-attach cycle entirely."
+    },
+    {
+      "id": "make-ai-email-attachment-organizer-and-logger",
+      "title": "AI Email Attachment Organizer & Logger",
+      "category": "Make",
+      "short_description": "Reads incoming email attachments with AI, renames them descriptively, then files, logs, and reports on each one without hands-on intervention.",
+      "images": ["/images/projects/make/email-attachments.png"],
+      "description": "A Make workflow that turns messy email attachments into neatly named, logged, and stored files. It watches Gmail for emails with attachments, leverages Gemini to analyze each file and generate a descriptive filename, saves the renamed file to Google Drive, logs its details in a spreadsheet, and delivers a processing summary, without requiring routine hands-on intervention.",
+      "subworkflows": [],
+      "client_context": "A business receiving a steady flow of email attachments that arrive with unhelpful or inconsistent filenames, requiring someone to open each one, figure out what it is, rename it, file it away, and keep a record manually.",
+      "problem": {
+        "summary": "Attachments landed in the inbox with meaningless names and no organization. Someone had to open each file, understand its contents, give it a sensible name, store it to the appropriate place, and manually log it, which was slow, repetitive, and easy to fall behind on.",
+        "issues": [
+          {
+            "name": "Unhelpful filenames",
+            "description": "Attachments often arrived with generic or cryptic names, making files hard to identify later without opening them."
+          },
+          {
+            "name": "hands-on sorting and filing",
+            "description": "Each attachment had to be reviewed, renamed, and stored manually, consuming time on repetitive work."
+          },
+          {
+            "name": "No record of what was processed",
+            "description": "There was no reliable log of incoming files, making them hard to track or audit."
+          }
+        ]
+      },
+      "objectives": [
+        "without hands-on intervention capture emails that contain attachments.",
+        "Use AI to understand each file and give it a clear, descriptive name.",
+        "store the renamed files to Google Drive in an organized way.",
+        "Keep a running log of processed files and send a summary of each run."
+      ],
+      "approach": {
+        "summary": "I designed and developed an complete automation in Make that watches Gmail for attachments, leverages Gemini to analyze and rename each file, then stores, logs, and reports on them.",
+        "steps": [
+          {
+            "step": 1,
+            "name": "Capture and filter attachments",
+            "description": "the automation watches Gmail for emails with attachments and maintains only the files that can be processed."
+          },
+          {
+            "step": 2,
+            "name": "Analyze and rename with AI",
+            "description": "Gemini analyzes each attachment and generates a clear, descriptive filename based on its contents."
+          },
+          {
+            "step": 3,
+            "name": "Store, log, and report",
+            "description": "The renamed file is stored to Google Drive, its details are logged in a spreadsheet, and a processing summary is emailed out."
+          }
+        ]
+      },
+      "key_design_decisions": [
+        {
+          "name": "Filter for emails with attachments only",
+          "description": "An early filter allows only emails that actually contain an attachment, which helps ensure the automation never runs on irrelevant mail."
+        },
+        {
+          "name": "Skip unsupported file types",
+          "description": "A second filter excludes 'officedocument' MIME-type attachments because Gemini cannot accept them, preventing failed runs on unsupported files."
+        },
+        {
+          "name": "AI-generated descriptive filenames",
+          "description": "by using Gemini to read each file and propose a name means files are labeled by what they actually contain, not by whatever name they arrived with."
+        },
+        {
+          "name": "Log every processed file",
+          "description": "Recording each file's details in a spreadsheet generates a clear, auditable trail of everything the automation handles."
+        },
+        {
+          "name": "Send a processing summary",
+          "description": "Emailing a summary at the end of each run gives visibility into what was processed without checking Drive or the log manually."
+        }
+      ],
+      "outcome": [
+        {
+          "name": "Files named by their contents",
+          "description": "Every attachment is without hands-on intervention given a clear, descriptive name, which helps ensure files are easy to identify quickly."
+        },
+        {
+          "name": "Hands-off filing",
+          "description": "Attachments are captured, renamed, and stored to Drive without any hands-on sorting."
+        },
+        {
+          "name": "Reliable handling of file types",
+          "description": "Unsupported attachments are filtered out without hands-on intervention, which helps ensure the automation runs smoothly without errors."
+        },
+        {
+          "name": "Full visibility",
+          "description": "Every processed file is logged and each run is summarized by email, giving a complete, trackable record."
+        }
+      ],
+      "tools_and_stack": [
+        "Make (orchestration, filters, error handling)",
+        "Gmail (attachment capture trigger and processing summary email)",
+        "Google Gemini (file analysis and descriptive filename generation)",
+        "Google Drive (renamed file storage)",
+        "Google Sheets (file processing log)"
+      ],
+      "business_value": "This automation turns a cluttered inbox of attachments into an organized, searchable file system independently. Files arrive, receive intelligently named, stored, and logged without anyone lifting a finger, saving repetitive hands-on work while ensuring nothing goes unfiled or untracked."
+    },
+    {
+      "id": "n8n-facebook-messenger-ai-support-chatbot",
+      "title": "Facebook Messenger AI Support Chatbot",
+      "category": "n8n",
+      "short_description": "An AI chatbot that answers Facebook Messenger inquiries without hands-on intervention, by using a knowledge base and conversation memory to reply in context.",
+      "images": ["/images/projects/n8n/fb-agent.png"],
+      "description": "An n8n-based automation that powers an AI chatbot on Facebook Messenger. It receives messages through a Meta webhook, handles Facebook's verification handshake, then runs an AI agent that draws on a knowledge base and past conversation context to generate a relevant reply and send it back through the Messenger API, without requiring routine hands-on intervention.",
+      "subworkflows": [],
+      "client_context": "A business fielding a steady stream of customer questions through its Facebook Page's Messenger, relying on staff to answer each one manually, often with repetitive questions and slow reply times outside working hours.",
+      "problem": {
+        "summary": "Every Messenger inquiry needed a person to read it, recall the appropriate answer, and type a reply. Common questions were asked over and over, responses lagged outside business hours, and the volume made reliable, timely support hard to maintain.",
+        "issues": [
+          {
+            "name": "hands-on, repetitive replies",
+            "description": "Staff answered the same common questions manually again and again, consuming time that could go elsewhere."
+          },
+          {
+            "name": "Slow reply times",
+            "description": "Customers waited for a human to be available, with little to no coverage outside working hours."
+          },
+          {
+            "name": "Inconsistent answers",
+            "description": "Replies varied depending on who responded and what they remembered, leading to an uneven customer experience."
+          }
+        ]
+      },
+      "objectives": [
+        "without hands-on intervention receive and respond to Facebook Messenger messages.",
+        "Handle Meta's webhook verification which helps ensure the integration stays connected.",
+        "Answer by using a knowledge base which helps ensure replies are accurate and on-brand.",
+        "Remember conversation context which helps ensure replies make sense within an ongoing chat."
+      ],
+      "approach": {
+        "summary": "I designed and developed an complete automation in n8n that receives Messenger messages through a Meta webhook, generates an AI reply grounded in a knowledge base and conversation history, and delivers it back to the user.",
+        "steps": [
+          {
+            "step": 1,
+            "name": "Verify and receive messages",
+            "description": "A Meta webhook handles Facebook's verification handshake and receives incoming Messenger messages, continuing only when an actual message is present."
+          },
+          {
+            "step": 2,
+            "name": "Generate a context-aware reply",
+            "description": "An AI agent pulls relevant information from the knowledge base and past conversation context to generate an accurate, on-topic response."
+          },
+          {
+            "step": 3,
+            "name": "Send the reply",
+            "description": "The generated reply is sent back to the user through the Messenger API."
+          }
+        ]
+      },
+      "key_design_decisions": [
+        {
+          "name": "Handle the Meta verification handshake",
+          "description": "The webhook branches on receive to return the hub.challenge token Facebook requires, keeping the integration verified and connected."
+        },
+        {
+          "name": "Continue only when a message is present",
+          "description": "A guard step filters out webhook events that carry no actual message, which helps ensure the AI only runs on real inquiries."
+        },
+        {
+          "name": "Knowledge-base grounding",
+          "description": "The agent retrieves from a knowledge base document which helps ensure answers stay accurate and on-brand instead of being made up."
+        },
+        {
+          "name": "Conversation memory",
+          "description": "Past messages are maintained as context which helps ensure the bot understands follow-up message questions within an ongoing chat rather than treating each message in isolation."
+        },
+        {
+          "name": "Gemini as the chat model",
+          "description": "Google Gemini powers the responses, giving natural, capable replies without heavy setup."
+        }
+      ],
+      "outcome": [
+        {
+          "name": "Instant, round-the-clock replies",
+          "description": "Customers receive answered immediately at any hour, without any staff needed on the other end."
+        },
+        {
+          "name": "Accurate, grounded answers",
+          "description": "Responses draw on the knowledge base, which helps ensure they stay correct and reliable instead of varying by who replies."
+        },
+        {
+          "name": "Context-aware conversations",
+          "description": "The bot follows the thread of a chat, handling follow-up message questions naturally rather than starting from scratch each time."
+        },
+        {
+          "name": "Freed-up staff time",
+          "description": "Repetitive questions are handled without hands-on intervention, letting the team focus on the inquiries that truly need a human."
+        }
+      ],
+      "tools_and_stack": [
+        "n8n (self-hosted orchestration, webhook, AI agent)",
+        "Meta / Facebook Messenger (webhook trigger and reply delivery via the Messenger API)",
+        "Google Gemini (chat model powering the responses)",
+        "Knowledge base document (source grounding for answers)",
+        "Conversation memory (ongoing chat context)"
+      ],
+      "business_value": "This automation turns a Facebook Page into a 24/7 self-serve support channel. Customer questions are answered instantly and accurately by using the business's own knowledge, conversations flow naturally with memory, and the team is freed from repetitive replies, while avoiding the need to add support headcount."
+    },
+    {
+      "id": "n8n-slack-ai-job-application-assistant",
+      "title": "Slack AI Job Application Assistant",
+      "category": "n8n",
+      "short_description": "Mention the Slack bot with a job search, and it finds matching postings, tailors a resume for each, and drafts a ready-to-send email or Upwork proposal.",
+      "images": ["/images/projects/n8n/job-assist.png"],
+      "description": "An n8n-based automation that turns a Slack message into a full set of tailored job applications. When the bot is mentioned in the jobs channel, it validates the request with an LLM, fetches matching job posts, then loops through each one to generate a tailored resume, generate it as a Google Doc, and draft a matching email or Upwork proposal, posting the results back to Slack, without requiring routine hands-on intervention.",
+      "subworkflows": [],
+      "client_context": "A job seeker who wants to apply to many relevant postings but faces hours of repetitive work per application, searching for roles, tailoring a resume to each, and writing a custom email or proposal every time.",
+      "problem": {
+        "summary": "Applying well means customizing every application, tailoring the resume to the posting and writing a fitting email or proposal. Doing this manually for each of many job posts is slow and repetitive, which helps ensure applications receive generic or the search stalls entirely.",
+        "issues": [
+          {
+            "name": "Repetitive per-application work",
+            "description": "Every job post required manually tailoring a resume and writing a custom message, multiplying effort across many applications."
+          },
+          {
+            "name": "Slow search-to-apply cycle",
+            "description": "Finding postings, adapting materials, and delivering them one by one made the whole handle drag."
+          },
+          {
+            "name": "Generic applications",
+            "description": "To store time, applications were often left generic, weakening their chances against tailored ones."
+          }
+        ]
+      },
+      "objectives": [
+        "Let a user kick off a job search simply by mentioning a Slack bot in the jobs channel.",
+        "Validate that the request is actually job-search related before doing any work.",
+        "Fetch relevant job posts and handle each one without hands-on intervention.",
+        "Produce a tailored resume plus a matching email or Upwork proposal for every job post and deliver them back in Slack."
+      ],
+      "approach": {
+        "summary": "I designed and developed an complete automation in n8n that starts from a Slack mention, validates and searches for jobs, then loops through each post to generate tailored application materials and report them back.",
+        "steps": [
+          {
+            "step": 1,
+            "name": "Validate the request and search",
+            "description": "When mentioned in the jobs channel, the bot leverages an LLM to confirm the message is a real job search, tells the user it is searching, then fetches matching job posts, replying with an invalid-request notice if the message doesn't qualify or no posts are found."
+          },
+          {
+            "step": 2,
+            "name": "Tailor an application for each job",
+            "description": "Looping through each job post, it generates resume content tailored to that role, generates a new resume from a template, fills it with the tailored content, and drafts a matching email or Upwork proposal where applicable."
+          },
+          {
+            "step": 3,
+            "name": "Deliver the results in Slack",
+            "description": "For every job post, it posts the details back to Slack along with the tailored resume link and any email draft or Upwork proposal, ready for the user to send."
+          }
+        ]
+      },
+      "key_design_decisions": [
+        {
+          "name": "LLM request validation",
+          "description": "A basic LLM classifies whether the Slack message is genuinely job-search related, which helps ensure the automation only runs on valid requests and returns a clear invalid-request message otherwise."
+        },
+        {
+          "name": "Immediate 'Searching...' acknowledgement",
+          "description": "The bot posts a quick status message which helps ensure the user knows their request was received while the longer work runs."
+        },
+        {
+          "name": "Graceful empty-result handling",
+          "description": "If the job-post API returns nothing, the user is notified instead of the automation failing silently."
+        },
+        {
+          "name": "Split and loop over posts",
+          "description": "The job-posts array is split out and processed one post at a time in a loop, which helps ensure any number of postings can be handled reliably."
+        },
+        {
+          "name": "Duplicate resume check",
+          "description": "Before generating, it checks whether a resume for that job post already exists, avoiding duplicate work."
+        },
+        {
+          "name": "Template copy then fill",
+          "description": "Each resume is made by copying a Google Docs template and filling it with AI-tailored content, keeping formatting reliable while personalizing the substance."
+        },
+        {
+          "name": "Wait steps for slow operations",
+          "description": "Deliberate waits allow resume generation and document copying to finish before the next step runs, preventing errors from acting on incomplete files."
+        },
+        {
+          "name": "Conditional email or Upwork proposal",
+          "description": "Based on whether the post provides an email address or is an Upwork listing, the automation drafts the appropriate outreach, an application email or a tailored proposal."
+        }
+      ],
+      "outcome": [
+        {
+          "name": "Search to applications in one message",
+          "description": "A single Slack mention turns into a batch of fully tailored applications, without any hands-on searching or drafting."
+        },
+        {
+          "name": "Tailored materials at scale",
+          "description": "Every job post receives its own customized resume and matching email or proposal, keeping quality high across many applications."
+        },
+        {
+          "name": "Fast, hands-off processing",
+          "description": "Postings are processed without hands-on intervention in a loop, with status updates in Slack which helps ensure the user always knows where things stand."
+        },
+        {
+          "name": "Ready-to-send output",
+          "description": "Results arrive in Slack with the job details, resume link, and any email or Upwork proposal, which helps ensure the user only has to review and send."
+        }
+      ],
+      "tools_and_stack": [
+        "n8n (self-hosted orchestration, LLM classification, AI agent, loops, conditionals, wait nodes)",
+        "Slack (bot trigger, status updates, and results delivery)",
+        "Job posts API (fetching matching job listings)",
+        "Google Gemini (resume content and outreach drafting)",
+        "Google Docs (resume template, duplicate check, copy, and fill)",
+        "Gmail (drafting the application email)"
+      ],
+      "business_value": "This automation compresses hours of per-application work into a single Slack message. The user receives a batch of tailored resumes plus matching emails or Upwork proposals for every relevant job post, keeping every application personalized and competitive while removing nearly all of the hands-on, repetitive effort."
+    },
+    {
+      "id": "n8n-ai-asmr-video-generator-and-publisher",
+      "title": "AI ASMR Video Generator & Publisher",
+      "category": "n8n",
+      "short_description": "Generates a fresh AI ASMR video every night with Google Veo and auto-publishes it to YouTube and Facebook, hands-free.",
+      "images": ["/images/projects/n8n/asmr-video.png"],
+      "description": "An n8n-based automation that produces and publishes a new AI ASMR video on a daily schedule. Every night it applies AI to write a video prompt, generates the video with Google's Veo model, waits for rendering, runs completion and policy checks, converts the result to a video file, and posts it to both YouTube and Facebook, without requiring routine hands-on intervention.",
+      "subworkflows": [],
+      "client_context": "A content creator who wants a steady stream of ASMR videos published across YouTube and Facebook but cannot manually script, generate, render, and upload a new video every single day.",
+      "problem": {
+        "summary": "Keeping two channels fed with fresh ASMR content daily meant coming up with an idea, generating a video, waiting for it to render, checking it, and uploading it to each platform, every day. That volume of repetitive production work is unsustainable manually.",
+        "issues": [
+          {
+            "name": "Daily production burden",
+            "description": "Creating and posting a new video every day is time-consuming and hard to keep up consistently."
+          },
+          {
+            "name": "Slow, multi-step generation",
+            "description": "AI video generation takes time and involves authentication, polling, and checks that are tedious to manage manually."
+          },
+          {
+            "name": "Multi-platform posting",
+            "description": "Each finished video had to be uploaded separately to YouTube and Facebook, doubling the hands-on effort."
+          }
+        ]
+      },
+      "objectives": [
+        "without hands-on intervention produce a new ASMR video every day on a set schedule.",
+        "Use AI to generate the video prompt which helps ensure no hands-on ideation is needed.",
+        "Generate, render, and validate the video without human oversight.",
+        "Publish each finished video to both YouTube and Facebook without hands-on intervention."
+      ],
+      "approach": {
+        "summary": "I designed and developed an complete automation in n8n that runs on a nightly schedule, writes a prompt, generates and validates a video with Google's Veo model, then publishes it to both platforms.",
+        "steps": [
+          {
+            "step": 1,
+            "name": "Generate the video prompt",
+            "description": "On a nightly schedule, an AI agent writes a structured ASMR video prompt to drive the generation."
+          },
+          {
+            "step": 2,
+            "name": "Generate and validate the video",
+            "description": "the automation authenticates to Google, starts the video generation with Veo, waits and polls for the finished render, and runs completion, policy, and error checks before converting the result into a video file."
+          },
+          {
+            "step": 3,
+            "name": "Publish to both platforms",
+            "description": "The finished video is uploaded to YouTube and posted to Facebook without hands-on intervention."
+          }
+        ]
+      },
+      "key_design_decisions": [
+        {
+          "name": "Scheduled nightly trigger",
+          "description": "A timed trigger runs the whole pipeline every night, which helps ensure fresh content is produced on a reliable cadence without any hands-on start."
+        },
+        {
+          "name": "AI-written structured prompt",
+          "description": "An AI agent with a structured output parser generates the video prompt, removing the need for hands-on ideation while keeping the prompt in a reliable, usable format."
+        },
+        {
+          "name": "Service-account JWT authentication",
+          "description": "the automation builds a service-account JWT, signs it, and exchanges it for an access token to call Google's Veo API securely without hands-on credential handling."
+        },
+        {
+          "name": "Start-then-poll generation",
+          "description": "Because Veo generation is long-running, one call starts the job and another polls for the finished video, with a wait step in between which helps ensure the automation doesn't act before rendering completes."
+        },
+        {
+          "name": "Completion, policy, and error checks",
+          "description": "The video is only published after it passes rendering-complete, policy, and error checks, preventing bad or non-compliant output from going live."
+        },
+        {
+          "name": "Base64 to video file conversion",
+          "description": "The API's Base64 response is converted into an actual video file which helps ensure it can be uploaded to the platforms."
+        },
+        {
+          "name": "Dual-platform publishing",
+          "description": "The same finished video is pushed to both YouTube and Facebook, maximizing reach starting with one generation."
+        }
+      ],
+      "outcome": [
+        {
+          "name": "Fully system-driven daily content",
+          "description": "A brand-new ASMR video is produced and published every day with zero hands-on work."
+        },
+        {
+          "name": "Hands-off AI generation",
+          "description": "Prompt writing, video generation, rendering, and validation all happen without hands-on intervention, including the slow, multi-step Veo handle."
+        },
+        {
+          "name": "Safe, validated output",
+          "description": "Completion, policy, and error checks ensure only good, compliant videos are published."
+        },
+        {
+          "name": "Reach across two channels",
+          "description": "Every video lands on both YouTube and Facebook starting with one system-driven run."
+        }
+      ],
+      "tools_and_stack": [
+        "n8n (self-hosted orchestration, scheduling, AI agent, conditionals, wait/polling)",
+        "Google Gemini (chat model powering prompt generation)",
+        "Google Veo (AI video generation via the Vertex AI predictLongRunning API)",
+        "Google service-account auth (JWT build, sign, and token exchange)",
+        "YouTube (video upload)",
+        "Facebook (video posting)"
+      ],
+      "business_value": "This automation runs an entire ASMR content channel on autopilot. Every day it invents, generates, validates, and publishes a fresh AI video to both YouTube and Facebook, sustaining a reliable multi-platform posting schedule that would be impossible to maintain manually, without any daily effort from the creator."
+    },
+    {
+      "id": "n8n-ai-voice-receptionist-appointment-backend",
+      "title": "AI Voice Receptionist Appointment Backend",
+      "category": "n8n",
+      "short_description": "Powers an AI phone receptionist that checks availability, books, reschedules, and cancels appointments in real time through Vapi.",
+      "images": ["/images/projects/n8n/ai-reception.png"],
+      "description": "An n8n-based automation that acts as the backend for an AI voice receptionist developed on Vapi. Vapi's tools trigger four webhook flows when the caller's intent is detected in conversation, letting the AI agent check calendar availability, book, reschedule, and cancel appointments in real time, syncing a calendar and an Airtable record while returning clean responses to the caller, without requiring routine hands-on intervention.",
+      "subworkflows": [
+        {
+          "name": "Record Lookup Subworkflow",
+          "images": ["/images/projects/n8n/ai-reception-sub.png"],
+          "description": "A reusable sub-workflow, called by both the reschedule and cancel flows, that finds a caller's existing appointment. It validates that the required parameters are complete, searches the Airtable records for a match and retrieves the corresponding calendar event, then routes with a Switch to one of three outcomes, record found, record not found, or incomplete data, delivering a Slack notification and returning the appropriate response to the caller."
+        }
+      ],
+      "client_context": "A business that handles appointment scheduling over the phone and wants an AI receptionist to answer calls and manage bookings, but needs a reliable backend that the voice agent can call, through Vapi tools triggered by the caller's intent, to actually check availability and generate, change, or cancel appointments in its calendar and records.",
+      "problem": {
+        "summary": "An AI voice agent can talk to callers, but independently it cannot check a real calendar, book a slot, move an appointment, or cancel one. It needed a backend that takes each request from the call, performs the real scheduling action, and hands back a clean answer the agent can speak.",
+        "issues": [
+          {
+            "name": "No real scheduling ability",
+            "description": "The voice agent could converse but had no way to read availability or write appointments to a real calendar and records."
+          },
+          {
+            "name": "Full lifecycle to cover",
+            "description": "Handling calls properly meant supporting availability checks, booking, rescheduling, and cancellation, not just one action."
+          },
+          {
+            "name": "Messy inputs and error cases",
+            "description": "Requests from a live call arrive loosely structured and can be incomplete, which helps ensure the backend had to clean data, validate it, and fail gracefully."
+          }
+        ]
+      },
+      "objectives": [
+        "Give the AI voice agent a backend that performs real scheduling actions.",
+        "Support the full appointment lifecycle: check availability, book, reschedule, and cancel.",
+        "Keep a calendar and an Airtable record in sync with every action.",
+        "Return clean, reliable responses to the voice agent, including friendly errors when data is missing."
+      ],
+      "approach": {
+        "summary": "I designed and developed an complete automation in n8n with four webhook flows, one per scheduling action, each triggered by a Vapi tool when the caller's intent is detected, cleaning the incoming request, performing the calendar and record operation, and responding to the agent.",
+        "steps": [
+          {
+            "step": 1,
+            "name": "Receive the request from the call",
+            "description": "Vapi is set up with tools that fire the matching webhook, availability, book, reschedule, or cancel, when the caller mentions the relevant intent, passing the request to n8n, which cleans and standardizes the incoming data."
+          },
+          {
+            "step": 2,
+            "name": "Perform the scheduling action",
+            "description": "The flow checks availability or generates, updates, or deletes the appointment in the calendar and maintains the Airtable record in sync, by using a shared record-lookup sub-workflow to find existing bookings when rescheduling or cancelling."
+          },
+          {
+            "step": 3,
+            "name": "Respond to the voice agent",
+            "description": "A clean response, available times, a confirmation, or a friendly error, is returned to Vapi for the agent to relay to the caller."
+          }
+        ]
+      },
+      "key_design_decisions": [
+        {
+          "name": "Intent-triggered Vapi tools per action",
+          "description": "Vapi is configured with tools that each fire a dedicated webhook when the caller mentions the relevant word or phrase, which helps ensure availability, booking, rescheduling, and cancelling are only invoked when the caller actually asks for them."
+        },
+        {
+          "name": "Clean and standardize every request",
+          "description": "Each flow starts by cleaning the loosely structured webhook response which helps ensure downstream steps work from reliable, reliable data."
+        },
+        {
+          "name": "Timezone normalization",
+          "description": "Incoming times are converted to Asia/Manila which helps ensure scheduling is always handled in the correct local time."
+        },
+        {
+          "name": "Reusable record-lookup sub-workflow",
+          "description": "Both reschedule and cancel call a shared sub-workflow to find the caller's existing appointment, avoiding duplicated logic."
+        },
+        {
+          "name": "Calendar and Airtable maintained in sync",
+          "description": "Every action updates both the calendar event and the Airtable record, which helps ensure the two never drift out of agreement."
+        },
+        {
+          "name": "Graceful validation and error responses",
+          "description": "Flows check for complete information and confirmed bookings, returning friendly, structured errors when data is missing instead of failing hard."
+        },
+        {
+          "name": "Agent-ready responses",
+          "description": "Responses are formatted specifically for Vapi which helps ensure the voice agent can immediately relay them to the caller."
+        }
+      ],
+      "outcome": [
+        {
+          "name": "A fully capable AI receptionist",
+          "description": "The voice agent can now actually check availability and book, reschedule, or cancel appointments during a live call."
+        },
+        {
+          "name": "complete lifecycle coverage",
+          "description": "Every scheduling action a caller might need is handled by its own reliable flow."
+        },
+        {
+          "name": "Always-reliable records",
+          "description": "Calendar and Airtable stay in sync on every booking, change, and cancellation."
+        },
+        {
+          "name": "Smooth handling of edge cases",
+          "description": "Incomplete or unconfirmed requests receive friendly, structured responses instead of breaking the call."
+        }
+      ],
+      "tools_and_stack": [
+        "n8n (self-hosted orchestration, webhooks, sub-workflows, conditionals, data cleaning)",
+        "Vapi (AI voice agent with tools that trigger each webhook flow on caller intent)",
+        "Google Calendar (availability checks and appointment create, update, delete)",
+        "Airtable (appointment record of book, reschedule, and cancel)"
+      ],
+      "business_value": "This automation gives an AI phone receptionist real scheduling power. Callers can check availability and book, move, or cancel appointments entirely through a natural voice conversation, while the calendar and records stay perfectly in sync and edge cases are handled gracefully, delivering front-desk scheduling around the clock without a human on the phone."
+    }
+  ]
+}
