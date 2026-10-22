@@ -1,47 +1,68 @@
-import React from 'react';
-import { personalInfo } from '../data/portfolioData';
-import { MapPin, ArrowUpRight, FileText } from 'lucide-react';
+import React from "react";
+import { personalInfo } from "../data/portfolioData";
+import { MapPin, ArrowUpRight, FileText } from "lucide-react";
 
-const skills = ['n8n', 'Zapier', 'Make.com', 'ChatGPT', 'Claude', 'Airtable', 'REST APIs', 'Supabase'];
+const skills = [
+  "n8n",
+  "Zapier",
+  "Make.com",
+  "ChatGPT",
+  "Claude",
+  "Airtable",
+  "REST APIs",
+  "Supabase",
+];
 
 export default function About() {
   return (
-    <section id="about" className="py-24 relative overflow-hidden bg-cyber-grid border-t border-[var(--border-color)]">
+    <section
+      id="about"
+      className="py-24 relative overflow-hidden bg-cyber-grid border-t border-[var(--border-color)]"
+    >
       {/* Ambient orbs */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[450px] h-[450px] bg-[#8B1FA0]/10 dark:bg-[#8B1FA0]/15 rounded-full blur-[140px] pointer-events-none"></div>
       <div className="absolute top-1/4 right-0 w-[300px] h-[300px] bg-[#EE34A4]/8 dark:bg-[#DA79E9]/8 rounded-full blur-[120px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-
           {/* LEFT — Photo + floating stat cards */}
           <div className="relative flex justify-center lg:justify-start">
             {/* Floating card — top left */}
             <div className="absolute -top-4 -left-4 z-10 glass-panel px-5 py-3 rounded-2xl shadow-lg">
-              <p className="text-2xl font-extrabold text-[#8B1FA0]">9</p>
-              <p className="text-xs text-[var(--muted-color)] font-medium mt-0.5">Projects</p>
+              <p className="text-2xl font-extrabold text-[#8B1FA0] text-center">
+                9
+              </p>
+              <p className="text-xs text-[var(--muted-color)] font-medium mt-0.5">
+                Projects
+              </p>
             </div>
 
             {/* Photo */}
-            <div className="relative w-72 sm:w-80 lg:w-[340px]">
+            <div className="relative w-88 sm:w-[420px] lg:w-[480px] xl:w-[520px]">
               {/* Glow ring behind image */}
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#8B1FA0]/30 to-[#EE34A4]/20 blur-2xl scale-105 pointer-events-none"></div>
+
               <div className="relative rounded-3xl overflow-hidden border border-[var(--card-border)] shadow-2xl">
                 <img
                   src="/images/graceljoynobg.png"
                   alt="Gracel Urquia"
                   className="w-full h-full object-cover object-top"
-                  style={{ aspectRatio: '3/4' }}
+                  style={{ aspectRatio: "3/4" }}
                 />
+
                 {/* Subtle gradient overlay at bottom */}
                 <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[var(--bg-color)]/40 to-transparent pointer-events-none"></div>
               </div>
             </div>
 
             {/* Floating card — bottom right */}
-            <div className="absolute -bottom-4 -right-4 lg:right-8 z-10 glass-panel px-5 py-3 rounded-2xl shadow-lg">
-              <p className="text-2xl font-extrabold text-[#8B1FA0]">24/7</p>
-              <p className="text-xs text-[var(--muted-color)] font-medium mt-0.5">Automated Systems</p>
+            <div className="absolute -bottom-4 -right-4 lg:right-1 z-10 glass-panel px-5 py-3 rounded-2xl shadow-lg">
+              <p className="text-2xl font-extrabold text-[#8B1FA0] text-center">
+                24/7
+              </p>
+              <p className="text-xs text-[var(--muted-color)] font-medium mt-0.5">
+                Automated Systems
+              </p>
             </div>
           </div>
 
@@ -54,15 +75,19 @@ export default function About() {
 
             {/* Headline */}
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[var(--text-color)] leading-[1.1]">
-              AI Automation Specialist turning{' '}
-              <span className="text-gradient-primary">manual work into autonomous systems</span>
+              AI Automation Specialist turning{" "}
+              <span className="text-gradient-primary">
+                manual work into autonomous systems
+              </span>
             </h2>
 
             {/* Bio */}
             <p className="text-base text-[var(--muted-color)] leading-relaxed">
-              I'm{' '}
-              <span className="font-semibold text-[#8B1FA0]">Gracel Urquia</span>
-              {', '}
+              I'm{" "}
+              <span className="font-semibold text-[#8B1FA0]">
+                Gracel Urquia
+              </span>
+              {", "}
               {personalInfo.bio}
             </p>
 
@@ -104,10 +129,8 @@ export default function About() {
               </a>
             </div>
           </div>
-
         </div>
       </div>
     </section>
   );
 }
-
